@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default function CategoriasCard({ categoria, delete_categoria }) {
-    // console.log(categoria, "componente card")
 
     return (
         <div>

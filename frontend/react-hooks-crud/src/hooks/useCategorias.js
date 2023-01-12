@@ -12,6 +12,13 @@ export function useCategorias() {
             })
     }, [])
 
+    const createCategorias = ((data_create) => {
+        CategoriasService.createCategorias(data_create)
+            .then(({ data }) => {
+                console.log(data)
+            })
+    })
+
 
     const delete_categoria = ((id) => {
         CategoriasService.deleteOne(id);
@@ -19,7 +26,7 @@ export function useCategorias() {
     })
 
 
-    return { categorias, setCategorias, delete_categoria }
+    return { categorias, setCategorias, delete_categoria, createCategorias }
 
 
 }
