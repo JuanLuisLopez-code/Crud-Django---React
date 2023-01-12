@@ -4,12 +4,10 @@ import { Link } from "react-router-dom";
 import CategoriasCard from "../components/CategoriasCard";
 
 const CategoriasList = () => {
-    const { categorias } = useCategorias();
-    console.log(categorias, "view")
-    console.log(categorias.length, "cantidad")
+    const { categorias, delete_categoria } = useCategorias();
 
     const trymap = categorias.length > 0 ? categorias.map(categoria =>
-                <CategoriasCard categoria={categoria} key={categoria.id}></CategoriasCard>
+        <CategoriasCard categoria={categoria} key={categoria.id} delete_categoria={delete_categoria}></CategoriasCard>
     ) : <p>No data</p>
 
     return (

@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 import CategoriasService from '../service/CategoriasService'
 
@@ -8,11 +8,18 @@ export function useCategorias() {
     useEffect(function () {
         CategoriasService.getAll()
             .then(({ data }) => {
-                setCategorias(data.Categorias)
+                setCategorias(data.Categorias);
             })
     }, [])
 
-    return { categorias, setCategorias }
+
+    const delete_categoria = ((id) => {
+        CategoriasService.deleteOne(id);
+        setCategorias(categorias.filter(categoria => categoria.id !== id));
+    })
+
+
+    return { categorias, setCategorias, delete_categoria }
 
 
 }
