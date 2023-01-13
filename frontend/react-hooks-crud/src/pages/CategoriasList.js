@@ -9,7 +9,8 @@ const CategoriasList = () => {
     const navigate = useNavigate();
 
     const trymap = categorias.length > 0 ? categorias.map(categoria =>
-        <CategoriasCard categoria={categoria} key={categoria.id} delete_categoria={delete_categoria}></CategoriasCard>
+        <CategoriasCard categoria={categoria} key={categoria.id} delete_categoria={delete_categoria}>
+        </CategoriasCard>
     ) : <p>No data</p>
 
     return (

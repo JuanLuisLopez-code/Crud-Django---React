@@ -1,9 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
-import { useNavigate } from "react-router-dom";
 
 export default function FormCreate({ createCategorias }) {
-    const navigate = useNavigate();
 
     const { register, handleSubmit } = useForm();
     const getForm = (data) => {
@@ -13,7 +11,7 @@ export default function FormCreate({ createCategorias }) {
     return (
         <form onSubmit={handleSubmit(getForm)}>
             <input type="text" placeholder='name' {...register("name")} />
-            <button onClick={() => navigate('/')}>
+            <button>
                 Send
             </button>
         </form>

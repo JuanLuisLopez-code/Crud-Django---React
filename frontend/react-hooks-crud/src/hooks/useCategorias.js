@@ -1,9 +1,11 @@
 import { useEffect, useState, useCallback } from 'react'
+import { useNavigate } from "react-router-dom";
 
 import CategoriasService from '../service/CategoriasService'
 
 export function useCategorias() {
     const [categorias, setCategorias] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(function () {
         CategoriasService.getAll()
@@ -14,8 +16,8 @@ export function useCategorias() {
 
     const createCategorias = ((data_create) => {
         CategoriasService.createCategorias(data_create)
-            .then(({ data }) => {
-                console.log(data)
+            .then(() => {
+                navigate('/')
             })
     })
 
@@ -27,6 +29,25 @@ export function useCategorias() {
 
 
     return { categorias, setCategorias, delete_categoria, createCategorias }
+}
 
+export function useCategoriasOne(id) {
 
+    const [categorias, setCategorias] = useState([]);
+    const navigate = useNavigate();
+
+    useEffect(function () {
+        CategoriasService.getOne(id)
+            .then(({ data }) => {
+                setCategorias(data.Categorias);
+            })
+    }, [])
+
+    const updateCategorias = ((data_create) => {
+        CategoriasService.updateCategorias(data_create)
+        .then(() => {
+            navigate('/')
+        })
+    })
+    return { categorias, setCategorias, updateCategorias }
 }
