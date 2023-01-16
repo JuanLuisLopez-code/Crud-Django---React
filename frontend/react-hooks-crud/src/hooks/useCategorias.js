@@ -1,6 +1,9 @@
 import { useEffect, useState, useCallback } from 'react'
 import { useNavigate } from "react-router-dom";
 
+import { toast } from "react-toastify";
+
+
 import CategoriasService from '../service/CategoriasService'
 
 export function useCategorias() {
@@ -24,6 +27,7 @@ export function useCategorias() {
 
     const delete_categoria = ((id) => {
         CategoriasService.deleteOne(id);
+        toast.success('Article deleted');
         setCategorias(categorias.filter(categoria => categoria.id !== id));
     })
 
@@ -45,9 +49,9 @@ export function useCategoriasOne(id) {
 
     const updateCategorias = ((data_create) => {
         CategoriasService.updateCategorias(data_create)
-        .then(() => {
-            navigate('/')
-        })
+            .then(() => {
+                navigate('/')
+            })
     })
     return { categorias, setCategorias, updateCategorias }
 }

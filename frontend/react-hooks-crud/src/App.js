@@ -7,11 +7,26 @@ const ListAll = React.lazy(() => import("./pages/CategoriasList"))
 const CategoriasCreate = React.lazy(() => import("./pages/CategoriasCreate"))
 const CategoriasUpdate = React.lazy(() => import("./pages/CategoriasUpdate"))
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function App() {
 
   return (
     <div className="App">
       <BrowserRouter>
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <Suspense fallback={
           <div>
             Hola
