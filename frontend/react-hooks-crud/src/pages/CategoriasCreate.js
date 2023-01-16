@@ -3,6 +3,8 @@ import { useCategorias } from "../hooks/useCategorias";
 import { Link } from "react-router-dom";
 import FormCreate from "../components/formCreate";
 
+
+
 const CategoriasCreate = () => {
     const { createCategorias } = useCategorias();
 
