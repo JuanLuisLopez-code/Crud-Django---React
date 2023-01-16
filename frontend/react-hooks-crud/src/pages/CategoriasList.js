@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import CategoriasCard from "../components/CategoriasCard";
 
 const CategoriasList = () => {
+    console.log("ssasdasdas")
     const { categorias, delete_categoria } = useCategorias();
     const navigate = useNavigate();
 

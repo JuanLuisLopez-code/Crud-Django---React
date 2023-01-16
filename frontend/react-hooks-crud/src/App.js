@@ -1,26 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
-import { Routes, Route, Link, BrowserRouter } from "react-router-dom";
-// import CategoriasList from "./pages/CategoriasList";
-// import CategoriasCreate from "./pages/CategoriasCreate";
-// import CategoriasUpdate from "./pages/CategoriasUpdate";
-import React from 'react';
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import React, { Suspense } from 'react';
+
+const ListAll = React.lazy(() => import("./pages/CategoriasList"))
+const CategoriasCreate = React.lazy(() => import("./pages/CategoriasCreate"))
+const CategoriasUpdate = React.lazy(() => import("./pages/CategoriasUpdate"))
 
 function App() {
-
-  const ListAll = React.lazy(() => import("./pages/CategoriasList"))
-  const CreateCategorias = React.lazy(() => import("./pages/CategoriasCreate"))
-  const UpdateCategorias = React.lazy(() => import("./pages/CategoriasUpdate"))
 
   return (
     <div className="App">
       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<ListAll />} />
-          <Route path="/create" element={<CreateCategorias />} />
-          <Route path="/update/:id" element={<CategoriasUpdate />} />
-          <Route path="/categorias" element={<UpdateCategorias />} />
-        </Routes>
+        <Suspense fallback={
+          <div>
+            Hola
+          </div>}>
+          <Routes>
+            <Route path="/" element={<ListAll />} />
+            <Route path="/create" element={<CategoriasCreate />} />
+            <Route path="/update/:id" element={<CategoriasUpdate />} />
+            <Route path="/categorias" element={<ListAll />} />
+          </Routes>
+        </Suspense>
       </BrowserRouter>
     </div>
   );
